@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compteur avec Bouton</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+        }
+        .counter-container {
+            text-align: center;
+            padding: 30px;
+            background: #ffffff;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .counter-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        #counter {
+            font-size: 3em;
+            margin: 15px 0;
+            color: #333;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 1.2em;
+            color: #ffffff;
+            background: linear-gradient(135deg, #007BFF, green);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            margin : 10px 10px;
+        }
+        button:hover {
+            background: linear-gradient(135deg, #0056b3, #003e7e);
+            transform: scale(1.1);
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <div class="counter-container">
+        <p id="counter">0</p>
+        <button onclick="incrementCounter()">incremente compteur charmant</button>
+        </br>
+        <button onclick="decrementCounter()">decremente compteur charmant</button>
+    </div>
+
+    <script>
+        let counter = parseInt(localStorage.getItem('counter')) || 0;
+        document.getElementById('counter').innerText = counter;
+
+        function incrementCounter() {
+            counter++;
+            localStorage.setItem('counter', counter);
+            document.getElementById('counter').innerText = counter;
+        }
+
+        function decrementCounter() {
+            counter--;
+            localStorage.setItem('counter', counter);
+            document.getElementById('counter').innerText = counter;
+        }
+    </script>
+</body>
+</html>
